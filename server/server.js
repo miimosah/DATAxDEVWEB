@@ -13,6 +13,8 @@ server.use(express.static('css'));
 server.use(express.static("img"));
 server.use(express.static("js"));
 
+server.set('view engine', 'ejs');
+
 server.get('/', (req, res) => {
     res.sendFile(__dirname + "\\index.html");
 })
@@ -20,19 +22,53 @@ server.get('/', (req, res) => {
 server.get('/formulaire', (req, res) => {
     res.sendFile(__dirname + "\\form.html");
 })
-server.post('/resform', (req, res) => {
-    
+
+
+
+server.post('/addUser', (req, res) => {
+
     var user = req.body
     console.log(user);
     axios.post("http://localhost:8000/addUser", user)
         .then(function () {
             console.log("goooood")
-            res.redirect("/");
-            res.end()
+            res.redirect("/chatRoom");
+            res.end();
         })
-        .catch(function () {
-            console.log("noooooon");
-        })
-    
+        .catch(function (err) {
+            console.log(err);
+            res.end();
+        });
+});
 
+// la liste des utilisateurs
+server.get('/chatRoom', (req, res) => {
+    console.log("toto")
+    axios.get("http://localhost:8000/userlist")
+        .then(function (response) {
+            console.log(response.data);
+            res.render("chatRoom", { gourmand: response.data });
+
+        })
+        .catch(function (err) {
+            console.error(err);
+            res.end();
+        });
+
+});
+//la suppression
+server.delete('/user/:id', (req, res) => { //:name= variable 
+    var userId = req.params["id"];// parms 
+
+    console.log(userId);
+    axios.delete("http://localhost:8000/deleteuser/" + userId)
+        .then(function () {// 
+            console.log("server : user " + userId + " deleted")
+            //res.redirect("/chatRoom");
+            res.end();
+        })
+        .catch(function (err) {
+            console.error(err);
+            res.end();
+        })
 });
