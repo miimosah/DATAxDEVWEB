@@ -2,19 +2,19 @@ const express = require('express');
 const server = express();
 const bodyParser = require('body-parser');
 const axios = require('axios');
-
+// le port du serveur
 server.listen(8080);
 console.log('votre server est enligne');
-
+// un parser qui permet de lire le body sous format de (url encoded)
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
-
+// les fichiers statics 
 server.use(express.static('css'));
 server.use(express.static("img"));
 server.use(express.static("js"));
-
+// le moteur template
 server.set('view engine', 'ejs');
-
+// les routes
 server.get('/', (req, res) => {
     res.sendFile(__dirname + "\\index.html");
 })
@@ -22,9 +22,7 @@ server.get('/', (req, res) => {
 server.get('/formulaire', (req, res) => {
     res.sendFile(__dirname + "\\form.html");
 })
-
-
-
+// l'inscription au chatRoom 
 server.post('/addUser', (req, res) => {
 
     var user = req.body
@@ -62,7 +60,7 @@ server.delete('/user/:id', (req, res) => { //:name= variable
 
     console.log(userId);
     axios.delete("http://localhost:8000/deleteuser/" + userId)
-        .then(function () {// 
+        .then(function () { 
             console.log("server : user " + userId + " deleted")
             //res.redirect("/chatRoom");
             res.end();
@@ -72,3 +70,4 @@ server.delete('/user/:id', (req, res) => { //:name= variable
             res.end();
         })
 });
+// la modification

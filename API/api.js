@@ -7,7 +7,7 @@ console.log('votre API est enligne');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-//envoyer les données à la bdd
+//l'ajout des new useres et envoyer les données à la bdd
 
 app.post('/addUser', (req, res) => {
     console.log(req.body)
@@ -34,7 +34,7 @@ app.post('/addUser', (req, res) => {
         connexion.end();
     });
 });
-
+// afficher la liste des utilisateurs
 app.get('/userlist', (req, res) => {
     console.log(req.body)
     var connexion = mysql.createConnection({
