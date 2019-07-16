@@ -40,18 +40,34 @@ server.post('/addUser', (req, res) => {
 });
 
 // la liste des utilisateurs
-server.get('/chatRoom', (req, res) => {
+server.get('/chatRoom', async (req, res) => {
     console.log("toto")
-    axios.get("http://localhost:8000/userlist")
+    // la liste des utilisateurs
+    let mdr = ""
+    await axios.get("http://localhost:8000/userlist")
         .then(function (response) {
             console.log(response.data);
-            res.render("chatRoom", { gourmand: response.data });
+            mdr = response.data
+            // res.render("ChatRoom", { gourmand: response.data });
 
         })
         .catch(function (err) {
             console.error(err);
             res.end();
         });
+    await
+    axios.get("http://localhost:8000/chatmssg")
+        .then(function (resp) {
+            console.log(resp.data);
+            res.render('ChatRoom', { util: resp.data, gourmand: mdr  });
+        })
+        .catch(function (err) {
+            console.error(err);
+            res.end();
+        });
+
+
+
 
 });
 //la suppression
@@ -60,7 +76,7 @@ server.delete('/user/:id', (req, res) => { //:name= variable
 
     console.log(userId);
     axios.delete("http://localhost:8000/deleteuser/" + userId)
-        .then(function () { 
+        .then(function () {
             console.log("server : user " + userId + " deleted")
             //res.redirect("/chatRoom");
             res.end();
@@ -70,4 +86,19 @@ server.delete('/user/:id', (req, res) => { //:name= variable
             res.end();
         })
 });
-// la modification
+
+
+//envoyer les messages
+
+server.post('/chatmsg', (req, res) => {
+    console.log(req.body);
+    var msg = req.body;
+    axios.post("http://localhost:8000/chatmsg", msg)
+        .then(function () {
+            res.end();
+        })
+        .catch(function (err) {
+            console.error(err);
+            res.end();
+        })
+})

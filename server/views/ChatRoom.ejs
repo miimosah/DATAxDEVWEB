@@ -24,46 +24,20 @@
             <div class="border border-light p-5">
 
                 <ul class="list-unstyled">
-                    <li class="d-flex justify-content-start mb-4">
-                        <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-7.jpg" alt="avatar"
-                            class="avatar rounded-circle mr-2 ml-lg-3 ml-0 z-depth-1">
-                        <div class="chat-body white p-3 ml-2 z-depth-1">
-                            <div class="header">
-                                <strong class="primary-font">Brad Pitt</strong>
-                                <small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 12 mins ago</small>
+                        <div>
+                              
                             </div>
-                            <hr class="w-100">
-                            <p class="mb-0">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt
-                                ut
-                                labore et dolore magna aliqua.
-                            </p>
-                        </div>
-                    </li>
-                    <li class="d-flex justify-content-end mb-4">
-                        <div class="chat-body white p-3 z-depth-1">
-                            <div class="header">
-                                <strong class="primary-font">Lara Croft</strong>
-                                <small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 13 mins ago</small>
-                            </div>
-                            <hr class="w-100">
-                            <p class="mb-0">
-                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                laudantium.
-                            </p>
-                        </div>
-                        <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" alt="avatar"
-                            class="avatar rounded-circle mr-0 ml-3 z-depth-1">
-                    </li>
                     <li class="d-flex justify-content-start mb-4 pb-3">
-                        <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-7.jpg" alt="avatar"
-                            class="avatar rounded-circle mr-2 ml-lg-3 ml-0 z-depth-1">
+                          <!-- <% util.forEach(function(u) { %>
+                                
+                                <div class="header">
+                                <strong class="primary-font"><%= u.user_name %></strong>
+                                </div>
+                
+                                <% }); %> -->
+                        
                         <div class="chat-body white p-3 ml-2 z-depth-1">
-                            <div class="header">
-                                <strong class="primary-font">Brad Pitt</strong>
-                                <small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 12 mins ago</small>
-                            </div>
+                           
                             <hr class="w-100">
                             <p class="mb-0">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -74,13 +48,18 @@
                         </div>
                     </li>
                     <li class="white">
-                        <div class="form-group basic-textarea">
-                            <textarea class="form-control pl-2 my-0" id="exampleFormControlTextarea2" rows="3"
-                                placeholder="Type your message here..."></textarea>
-                        </div>
-                    </li>
-                    <button type="button"
-                        class="btn btn-info btn-rounded btn-sm waves-effect waves-light float-right">Send</button>
+                        <form method="POST" action="/chatmsg">
+                                <div class="form-group basic-textarea">
+                                    <textarea class="form-control pl-2 my-0" id="exampleFormControlTextarea2" rows="3"
+                                            placeholder="Type your message here..." name="textmsg"></textarea>
+                                    </div>
+                                </li>
+                                <input type="hidden" name="id">
+                                <button type="submit"
+                                    class="btn btn-info btn-rounded btn-sm waves-effect waves-light float-right">Send</button>
+
+                        </form>
+                        
                 </ul>
 
             </div>
