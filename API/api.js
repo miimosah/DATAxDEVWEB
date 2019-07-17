@@ -14,7 +14,7 @@ app.post('/addUser', (req, res) => {
     var connexion = mysql.createConnection({
         host: "localhost",
         user: "root",
-        password: "root",
+        password: "78929313k",
         database: "chatnanterre",
     });
     connexion.connect(function (err) {
@@ -23,15 +23,27 @@ app.post('/addUser', (req, res) => {
         } else
             console.log(err);
 
-        var sql = "INSERT INTO users ( user_name, user_psw) values(?,?)";
+        var sql = "INSERT INTO users (user_name, user_psw) values(?,?)";
         connexion.query(sql, [req.body.Pseudo, req.body.password], (err) => {
             if (err) {
                 console.log(err)
             }
-        
-            res.end();
+            else {
+                var sqlBis = "SELECT user_name, user_id FROM users WHERE user_name=?"
+                connexion.query(sqlBis, [req.body.Pseudo], (err, response) => {
+                    if (err) {
+                        console.log(err);
+                    }
+                    res.json(response);
+
+                    connexion.end();
+                    res.end();
+                    
+                })               
+            }           
+                       // res.json(req.body.Pseudo);
         });
-        connexion.end();
+        
     });
 });
 // afficher la liste des utilisateurs
@@ -40,7 +52,7 @@ app.get('/userlist', (req, res) => {
     var connexion = mysql.createConnection({
         host: "localhost",
         user: "root",
-        password: "root",
+        password: "78929313k",
         database: "chatnanterre",
     });
     connexion.connect(function (err) {
@@ -68,7 +80,7 @@ app.delete('/deleteuser/:id', (req, res) => {
     var connexion = mysql.createConnection({
         host: "localhost",
         user: "root",
-        password: "root",
+        password: "78929313k",
         database: "chatnanterre",
     });
     connexion.connect(function (err) {
@@ -92,11 +104,12 @@ app.delete('/deleteuser/:id', (req, res) => {
 
 // envoyer les messages
 app.post('/chatmsg', (req, res) => {
+    console.log(req.body);
 
     var connexion = mysql.createConnection({
         host: "localhost",
         user: "root",
-        password: "root",
+        password: "78929313k",
         database: "chatnanterre",
     });
     connexion.connect(function (err) {
@@ -104,9 +117,9 @@ app.post('/chatmsg', (req, res) => {
             console.log("Connected!");
         } else
             console.log(err);
-
-        var sql = "INSERT INTO messages (message, sent_date, user_id) VALUES (?, NOW(), ?)";
-        connexion.query(sql,[req.body.textmsg, req.params.id], (err, results) => {
+        console.log(req.body);
+        var sql = "INSERT INTO messages (message, user_id, sent_date) VALUES (?,?, NOW())";
+        connexion.query(sql,[req.body.textmsg,req.body.id], (err, results) => {
             
             if (err) {
                 console.log(err)
@@ -123,7 +136,7 @@ app.get('/chatmssg', (req, res)=>{
     var connexion = mysql.createConnection({
         host: "localhost",
         user: "root",
-        password: "root",
+        password: "78929313k",
         database: "chatnanterre",
     });
     connexion.connect(function (err) {

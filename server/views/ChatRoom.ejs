@@ -17,7 +17,7 @@
     <section id="chatRoom" class=" col sm-9 ">
         <div class="container my-4">
 
-            <p class="font-weight-bold">BIENVENUE SUR NOTRE CHAT ROOM .</p>
+            <p class="font-weight-bold">BIENVENUE SUR NOTRE CHAT ROOM .<%= pseudo %></p>
 
             <hr class="my-5">
 
@@ -35,10 +35,13 @@
                                 </div>
                 
                                 <% }); %> -->
-                        
+                         <hr class="w-100">
                         <div class="chat-body white p-3 ml-2 z-depth-1">
+                           <% util.forEach(function(u) { %>
+                        <div><p class="mb-0 danger"><%= u.user_name %> a dit: </p><p class="mb-0"><%= u.message %> </p> </div>
+
+                         <% }); %>
                            
-                            <hr class="w-100">
                             <p class="mb-0">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                 incididunt
@@ -50,11 +53,21 @@
                     <li class="white">
                         <form method="POST" action="/chatmsg">
                                 <div class="form-group basic-textarea">
-                                    <textarea class="form-control pl-2 my-0" id="exampleFormControlTextarea2" rows="3"
+                                
+                                    <textarea class="form-control pl-2 my-0" id="<%= pseudo %>" rows="3"
                                             placeholder="Type your message here..." name="textmsg"></textarea>
                                     </div>
+                                    <input type="hidden" value="<%= pseudo %>" name="id">
                                 </li>
-                                <input type="hidden" name="id">
+                                <script>
+                                  let user = <%- JSON.stringify(pseudo) %>;
+                                  localStorage.setItem('pseudo', JSON.stringify({'pseudo': user}));
+                                </script>
+
+                                <script>
+                                    let lol = <%= pseudo %>
+                                    localStorage.setItem("pseudo", lol);
+                                </script>
                                 <button type="submit"
                                     class="btn btn-info btn-rounded btn-sm waves-effect waves-light float-right">Send</button>
 
