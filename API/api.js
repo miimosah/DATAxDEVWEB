@@ -6,17 +6,19 @@ app.listen(8000);
 console.log('votre API est enligne');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+var connexionInfo ={
+    host: "localhost",
+    user: "root",
+    password: "78929313k",
+    database: "chatnanterre",
+
+}
 
 //l'ajout des new useres et envoyer les données à la bdd
 
 app.post('/addUser', (req, res) => {
     console.log(req.body)
-    var connexion = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "78929313k",
-        database: "chatnanterre",
-    });
+    var connexion = mysql.createConnection(connexionInfo);
     connexion.connect(function (err) {
         if (!err) {
             console.log("Connected!");
@@ -49,12 +51,7 @@ app.post('/addUser', (req, res) => {
 // afficher la liste des utilisateurs
 app.get('/userlist', (req, res) => {
     console.log(req.body)
-    var connexion = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "78929313k",
-        database: "chatnanterre",
-    });
+    var connexion = mysql.createConnection(connexionInfo);
     connexion.connect(function (err) {
         if (!err) {
             console.log("Connected!");
@@ -77,12 +74,7 @@ app.get('/userlist', (req, res) => {
 
 app.delete('/deleteuser/:id', (req, res) => {
  
-    var connexion = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "78929313k",
-        database: "chatnanterre",
-    });
+    var connexion = mysql.createConnection(connexionInfo);
     connexion.connect(function (err) {
         if (!err) {
             console.log("Connected!");
@@ -106,12 +98,7 @@ app.delete('/deleteuser/:id', (req, res) => {
 app.post('/chatmsg', (req, res) => {
     console.log(req.body);
 
-    var connexion = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "78929313k",
-        database: "chatnanterre",
-    });
+    var connexion = mysql.createConnection(connexionInfo);
     connexion.connect(function (err) {
         if (!err) {
             console.log("Connected!");
@@ -133,12 +120,7 @@ app.post('/chatmsg', (req, res) => {
 })
 //afficher les messages 
 app.get('/chatmssg', (req, res)=>{
-    var connexion = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "78929313k",
-        database: "chatnanterre",
-    });
+    var connexion = mysql.createConnection(connexionInfo);
     connexion.connect(function (err) {
         if (!err) {
             console.log("Connected!");

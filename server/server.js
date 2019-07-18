@@ -113,10 +113,12 @@ server.post('/chatmsg', (req, res) => {
     var msg = req.body;
     axios.post("http://localhost:8000/chatmsg", msg)
         .then(function () {
+            res.redirect("http://localhost:8080/chatRoom")
             res.end();
         })
         .catch(function (err) {
             console.error(err);
             res.end();
         })
+
 })
