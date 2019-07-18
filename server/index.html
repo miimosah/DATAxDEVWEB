@@ -7,12 +7,16 @@
      
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="index.css">
-    <title>Document</title>
+   <link href="https://fonts.googleapis.com/css?family=Dancing+Script:400,700&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+
+
+    <title>SuperChef App</title>
 </head>
 <body>
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top menu navbar-right">
-    <a class="navbar-brand">Menu</a>
+   
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -39,9 +43,7 @@
         </li>
       </ul>
    
-      <form class="form-inline my-2 my-lg-0">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a href="http://localhost:8080/formulaire">S'inscrire</a> </button>
-      </form>
+      
     </div>
   </nav>
         <div class="bd-example">
@@ -55,22 +57,22 @@
                 <div class="carousel-item active">
                   <img src="fraisiers.jpg" class="d-block w-100" alt="...">
                   <div class="carousel-caption d-none d-md-block">
-                    <h3>Fraisier</h3>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                    <h3 class="text-warning">Fraisier</h3>
+                    <!-- <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> -->
                   </div>
                 </div>
                 <div class="carousel-item">
                   <img src="chocolat.jpg" class="d-block w-100" alt="...">
                   <div class="carousel-caption d-none d-md-block">
-                  <h2>Gateau au </h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  <h2 class="text-warning">Gâteau au Chocalat</h2>
+                    <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
                   </div>
                 </div>
                 <div class="carousel-item">
                   <img src="tarte.jpg" class="d-block w-100" alt="...">
                   <div class="carousel-caption d-none d-md-block">
-                    <h2>Tarte au </h2>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                    <h2 class="text-warning">Tarte aux framboises </h2>
+                    <!-- <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p> -->
                   </div>
                 </div>
               </div>
@@ -84,22 +86,20 @@
               </a>
             </div>
           </div>
-          <h1>Super chef</h1>
-          <div class="container">
-          <h2>A propos</h2>
-          <h3>Bienvenue dans l’univers des gourmandises</h3>
-          <p id="apropos">
-            Je suis Julien Loustau, un pâtissier amateur de 35 ans, autodidacte et diplômé d’un CAP pâtissier.
+          <section id="apropos" class="d-flex flex-column justify-content-center align-content-center">
             
-            J’enrichis mon apprentissage et développe des compétences en m’inspirant des réalisations des plus grands chefs de la pâtisserie.
-            
-            Ma formation de chimiste me permet de mieux appréhender la transformation des matières premières utilisées en pâtisserie. Mon esprit scientifique m’apporte la rigueur et la précision qu’exige la pâtisserie. Du moins c’est ce que je m’impose à chacune des nouvelles réalisations ou créations.
-            
-            Ainsi, j’élabore mes propres recettes que je partage sur ce site.
-            
-            Je vous invite à découvrir et à tester toutes mes recettes ultra gourmandes !</p>
-            
-          </div>
+            <article class="container d-flex flex-column justify-content-between align-content-center">
+              <h1 class="align-content-center">Bienvenue sur Super chef!</h1>
+              
+              <h3>Vous voulez manger bon? beau? sain? sans gaspillage? Venez partager vos recettes sur votre chat!</h3>
+              <form>
+                <button class="btn btn-dark my-2 my-sm-0" type="submit"><a
+                    href="http://localhost:8080/formulaire">Se connecter au SuperChat</a> </button>
+              </form>
+
+            </article>
+          </section>
+          
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

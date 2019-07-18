@@ -1,10 +1,31 @@
+*{
+    margin:0;
+    padding:0;
+    
+
+}
 .menu{
     opacity: 0.7;
     height: 10vh;
+    font-family: 'Dancing Script',cursive;
   
 }
+
 #apropos{
-    text-align: justify;
-    width: 30vw;
-    justify-content: center;
+    text-align: center;
+    width: 100vw;
+    height:80vh;
+    font-family: 'Open Sans',sans-serif;
+    text-decoration: none;
+    
+    
+}
+#apropos a {
+  text-decoration: none;
+  color:white;
+  height:80vh;
+}
+#apropos button a:hover{
+    color:yellow;
+    
 }
